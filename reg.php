@@ -152,9 +152,15 @@
 			//email example         jeffkramer00   @   gmail     . com
 			//note above          /^[a-zA-Z0-9_\.]+@[A-Za-z0-9]+\.[a-z]{2,4}$/
 			//note above                                        \.(com|net|org)$/
-			//$('#showPw'(password){
-			//.attr('password', 'text')
-			//});
+			$('#showPw').click(function() {
+				var type = $('#userpw').attr('type');
+				if(type === "text") {
+					$('#userpw').attr('type', 'password');
+				} else {
+					$('#userpw').attr('type', 'text');
+				}
+				return false;
+			});
 
 			$(function() {
 				// Handle the submit event by validating our fields first
