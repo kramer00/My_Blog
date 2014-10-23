@@ -1,6 +1,6 @@
 <?php
 require_once 'database.php';
-
+session_start();
 /**
  * @param $email String User email
  * @param $username String Username
@@ -29,7 +29,7 @@ function add_user($email, $username, $password)
  * Pass in the username and password to log the user in
  * @param $username String
  * @param $password String
- * @return string
+ * @return string|array Returns a string with error messages if any. Otherwise, returns array on successful login.
  */
 function login_user($username, $password)
 {

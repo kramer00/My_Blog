@@ -9,6 +9,9 @@
 		<meta name="author" content="">
 
 		<title>Clean Blog - Contact</title>
+		
+		<!-- My CSS -->
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
 
 		<!-- Bootstrap Core CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,18 +30,7 @@
 	</head>
 	<body>
 
-		<?php
-		require_once 'backend/user_functions.php';
-
-		if (isset($_POST['user_id']) AND isset($_POST['user_password']) AND isset($_POST['uesr_email'])) {
-			$result = add_user($_POST['user_email'], $_POST['user_id'], $_POST['user_password']);
-			if ($result === TRUE) {
-				echo 'ADDED NEW USER';
-			} else {
-				echo $result;
-			}
-		}
-		?>
+		
 
 		<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
 			<div class="container-fluid">
@@ -89,7 +81,20 @@
 		</header>
 
 		<div id="frame">
-			<div>
+			<?php
+			require_once 'backend/user_functions.php';
+			
+			if (isset($_POST['user_id']) AND isset($_POST['user_password']) AND isset($_POST['user_email'])) {
+				$result = add_user($_POST['user_email'], $_POST['user_id'], $_POST['user_password']);
+				if ($result === TRUE) {
+					echo 'ADDED NEW USER';
+				} else {
+					echo $result;
+				}
+			}
+			?>
+			<h1 id="login-header">Login</h1>
+			<div id="login-container">
 				<form method="post" id="reg_form">
 					<label for="username">User Name:</label>
 					<input type="text" name="user_id" id="username" />
@@ -188,6 +193,6 @@
 			});
 		</script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="js/clean-blog.min.js"></script>
+		<script src="js/clean-blog.js"></script>
 	</body>
 </html>
