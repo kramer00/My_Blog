@@ -132,9 +132,6 @@ hr.small {
     transform: translate3d(0, 100%, 0);
   }
 }
-form {
-	padding-left:600px;
-}
 .intro-header {
   background-color: #808080;
   background: no-repeat center center;
