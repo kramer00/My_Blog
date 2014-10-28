@@ -2,7 +2,7 @@
 $message = '';
 if(isset($_POST['username']) AND isset($_POST['password']))
 {
-    include 'backend/user_functions.php';
+    include_once '../backend/user_functions.php';
     $result = login_user($_POST['username'], $_POST['password']);
 
     if(is_array($result)) {
@@ -22,9 +22,9 @@ if(isset($_POST['username']) AND isset($_POST['password']))
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Login!!!!</h1>
+                        <h1>Login</h1>
                         <hr class="small">
-                        <span class="subheading">Login!!!!</span>
+                        <span class="subheading">Who Are You Really?</span>
                     </div>
                 </div>
             </div>

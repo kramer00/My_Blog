@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>RB Admin | End All Say All With Blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -136,7 +136,7 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Remark <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -158,16 +158,16 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="/admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="/admin/create_post.php"><i class="fa fa-fw fa-bar-chart-o"></i> Create Post</a>
+                    <a href="create_post.php"><i class="fa fa-fw fa-bar-chart-o"></i> Create Post</a>
                 </li>
                 <li>
-                    <a href="/admin/list_posts.php"><i class="fa fa-fw fa-table"></i> Posts</a>
+                    <a href="list_posts.php"><i class="fa fa-fw fa-table"></i> Posts</a>
                 </li>
                 <li>
-                    <a href="/admin/list_users.php"><i class="fa fa-fw fa-edit"></i> Users</a>
+                    <a href="list_users.php"><i class="fa fa-fw fa-edit"></i> Users</a>
                 </li>
             </ul>
         </div>
