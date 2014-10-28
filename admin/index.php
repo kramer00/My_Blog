@@ -4,8 +4,8 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Blog Admin!!!!
-            <small>Bloggerific!</small>
+            Blog Admin
+            <small>Cut And Dice</small>
         </h1>
         <ol class="breadcrumb">
             <li>
