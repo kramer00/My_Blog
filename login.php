@@ -2,7 +2,7 @@
 $message = '';
 if(isset($_POST['username']) AND isset($_POST['password']))
 {
-    include_once '../backend/user_functions.php';
+    include 'backend/user_functions.php';
     $result = login_user($_POST['username'], $_POST['password']);
 
     if(is_array($result)) {

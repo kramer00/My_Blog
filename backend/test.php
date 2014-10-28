@@ -8,7 +8,10 @@ $email = 'thi@thi.com';
 
 //$result = unique_check('username', $username);
 //var_dump($result);
-delete_post(3);
+$posts = get_post(NULL, 0, 1);
+print_r($posts);
+$posts = get_post(NULL, 1, 1);
+print_r($posts);
 /*
 $result = add_user($email, $username, $password);
 

@@ -61,7 +61,7 @@ $users = get_user();
             var data = {
                 id : blah.attr('user-id')
             }
-            $.post('/ajax/delete_user.php', data, function(response) {
+            $.post('../ajax/delete_user.php', data, function(response) {
                 if (response == 1) {
                     blah.parent().parent().remove();
                 }

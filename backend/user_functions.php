@@ -2,7 +2,7 @@
 session_start();
 require_once 'database.php';
 
-/**
+/*
  * @param $email String User email
  * @param $username String Username
  * @param $password String User password
@@ -26,7 +26,7 @@ function add_user($email, $username, $password)
     return mysql_error();
 }
 
-/**
+/*
  * Pass in the username and password to log the user in. Returns an array with the fields user_id, username, email on successful login
  * @param $username String
  * @param $password String
@@ -53,7 +53,7 @@ function login_user($username, $password)
     return $row;
 }
 
-/**
+/*
  * Get all users if no id is passed in. Return just the user belonging to id if passed in.
  * @param int $id User id. OPTIONAL
  * @return array Returns an array of all users that are matched
@@ -73,7 +73,7 @@ function get_user($id = NULL)
     $result = mysql_query($select_query);
 
     $users = array();
-    while ($row = mysql_fetch_array($result))
+    while ($row = mysql_fetch_assoc($result))
     {
         $users[] = $row;
     }
@@ -81,7 +81,7 @@ function get_user($id = NULL)
     return $users;
 }
 
-/**
+/*
  * Logs the user out by destroying $_SESSION['user']
  * @return bool
  */
@@ -92,7 +92,7 @@ function logout_session()
     return TRUE;
 }
 
-/**
+/*
  * Check whether a username or email is unique
  * @param string $field "username" or "email", the field to check for uniqueness
  * @param string $value Field value

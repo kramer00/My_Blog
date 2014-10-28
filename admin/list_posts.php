@@ -61,7 +61,7 @@ $posts = get_post();
 				var data = {
 					id : blah.attr('data-id')
 				}
-				$.post('/ajax/delete_post.php', data, function(response) {
+				$.post('../ajax/delete_post.php', data, function(response) {
 					if (response == 1) {
 						blah.parent().parent().remove();
 					}
