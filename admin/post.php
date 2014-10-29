@@ -14,7 +14,7 @@ include_once 'admin_header.php';
 
 		$picture = '';
 		if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0) {
-			move_uploaded_file($_FILES['photo']['tmp_name'], $_SERVER['DOCUMENT_ROOT'], 'img/headers', $_FILES['photo']['name']);
+			move_uploaded_file($_FILES['photo']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] .'/img/headers/'. $_FILES['photo']['name']);
 			$picture = $_FILES['photo']['name'];
 		}
 

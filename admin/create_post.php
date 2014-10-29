@@ -1,20 +1,30 @@
 <?php
 include_once 'admin_header.php';
+include_once '../backend/post_functions.php';
 ?>
 
 <?php
-$message = '';
+
 if (isset($_POST['title']) AND isset($_POST['body'])) {
-	include_once '../backend/post_functions.php';
 
-	$user_id = $_SESSION['user']['user_id'];
-	$result = add_post($_POST['title'], $_POST['body'], $user_id);
+	$picture = '';
+	//check that $_FILES['photo'] is set and there are no errors//
+	if (isset($_FILES['photo']) AND $_FILES['photo']['error'] == 0) {
+		// Move the temporary files to the final location//
+		move_uploaded_file($_FILES['photo']['tmp_name'], $_SERVER['DOCUMENT_ROOT'] .'/img/headers/'.  $_FILES['photo']['name']);
 
-	if ($result === FALSE) {
-		$message = '<div class="alert alert-danger">Failed to create post</div>';
-	} else {
-		$message = '<div class="alert alert-success">Successfully created post.</div>';
+		//assign the filename to $Picture
+		$picture = $_FILES['photo']['name'];
 	}
+
+	$result = add_post($_POST['title'], $_POST['body'], $_SESSION['user']['user_id'], $picture);
+
+	if (is_array($result)) {
+		echo 'added new post';
+	} else {
+		echo $result;
+	}
+
 }
 ?>
 
@@ -30,10 +40,10 @@ if (isset($_POST['title']) AND isset($_POST['body'])) {
                 <i class="fa fa-file"></i> Create Post
             </li>
         </ol>
-        <?php echo $message; ?>
+
         <?php
-        include 'inc/post_form.php';
-		?>
+		include 'inc/post_form.php';
+        ?>
     </div>
 </div>
 <!-- /.row -->

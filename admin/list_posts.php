@@ -48,7 +48,7 @@ $posts = get_post();
                     ?>
                     <tr>
                         <td><?php echo $post['post_id']; ?></td>
-                        <td><a href="/post.php?id=<?php echo $post['post_id']; ?>"><?php echo $post['title']; ?></a></td>
+                        <td><a href="post.php?id=<?php echo $post['post_id']; ?>"><?php echo $post['title']; ?></a></td>
                         <td><?php echo date('Y-m-d h:iA', $post['created_ts']); ?></td>
                         <td><span data-id="<?php echo $post['post_id']; ?>" class="glyphicon glyphicon-remove remove-post"></span>&nbsp;|&nbsp;
                         	<a href="post.php?id=<?php echo $post['post_id']; ?>"><span update-id="<?php echo $post['post_id']; ?>" class="glyphicon glyphicon-pencil update-post"></span></a></td>
@@ -61,21 +61,6 @@ $posts = get_post();
     </div>
     <!-- /.row -->
     <script>
-        $('.update-post').click(function() {
-            var confirm_result = confirm('You\'re about to edit this post. Do you want to continue?');
-            if (confirm_result) {
-                var blah = $(this);
-                var data = {
-                    id : blah.attr('update-id')
-                }
-                $.post('../admin/post.php', data, function(response) {
-                    if (response == 1) {
-                        blah.parent().parent().remove();
-                    }
-                });
-            }
-        });
-
         $('.remove-post').click(function() {
             var confirm_result = confirm('Are you sure you want to delete this?');
             if (confirm_result) {
@@ -86,6 +71,21 @@ $posts = get_post();
                 $.post('../ajax/delete_post.php', data, function(response) {
                     if (response == 1) {
                         blah.parent().parent().remove();
+                    }
+                });
+            }
+        });
+        
+        $('.update-post').click(function() {
+            var confirm_result = confirm('You\'re about to edit this post. Do you want to continue?');
+            if (confirm_result) {
+                var blah = $(this);
+                var data = {
+                    id : blah.attr('update-id')
+                }
+                $.post('../admin/post.php', data, function(response) {
+                    if (response == 1) {
+                        blah.parent().parent();
                     }
                 });
             }

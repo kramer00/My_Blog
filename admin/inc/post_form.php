@@ -2,23 +2,23 @@
         <form role="form" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+                <input type="text" name="title" class="form-control" id="title" placeholder="Title" value="<?php echo $post['title']; ?>" />
             </div>
             <div class="form-group">
                 <label for="body">Body</label>
-                <textarea name="body" class="form-control" id="body"></textarea>
+                <textarea name="body" class="form-control" id="body"><?php echo $post['body']; ?></textarea>
             </div>
             <div class="form-group">
             	<input type="hidden" name="original_picture" value="<?php echo $post['picture']; ?>" />
             	<?php
             	
-            	if(!empty($post[picture])) { ?>
-            		<a href="/img/<?php echo $post['picture']; ?>" target="_new">Picture Goes Here</a>
+            	if(!empty($post['picture'])) { ?>
+            		<a href="/img/headers/<?php echo $post['picture']; ?>" target="_new"></a>
             		<?php
             	}
             	?>
             	<label for="photo">add file</label>
-            	<input type="file" name="photo" id="photo">
+            	<input type="file" name="photo" id="photo" />
             </div>
             <button type="submit" class="btn btn-info">
                 Post

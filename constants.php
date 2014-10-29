@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('America/Los_angeles');
-//error_reporting(0);
+error_reporting(0);
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
 define("DB_PASS", "");
