@@ -139,3 +139,12 @@ function delete_user($id)
 
     return FALSE;
 }
+
+/**
+ * Determines whether a user is logged in or not
+ * @return bool
+ */
+function is_logged_in()
+{
+    return isset($_SESSION['user']);
+}

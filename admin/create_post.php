@@ -31,19 +31,9 @@ if (isset($_POST['title']) AND isset($_POST['body'])) {
             </li>
         </ol>
         <?php echo $message; ?>
-        <form role="form" method="post">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" name="title" class="form-control" id="title" placeholder="Title">
-            </div>
-            <div class="form-group">
-                <label for="body">Body</label>
-                <textarea name="body" class="form-control" id="body"></textarea>
-            </div>
-            <button type="submit" class="btn btn-info">
-                Post
-            </button>
-        </form>
+        <?php
+        include 'inc/post_form.php';
+		?>
     </div>
 </div>
 <!-- /.row -->

@@ -13,6 +13,12 @@ $users = get_user();
         font-weight: bold;
         cursor: pointer;
     }
+    .glyphicon-pencil {
+		color:blue;
+		font-size: 18px;
+		font-weight: bold;
+		cursor: pointer;
+	}
 </style>
     <!-- Page Heading -->
     <div class="row">
@@ -44,7 +50,7 @@ $users = get_user();
                         <td><?php echo $user['user_id']; ?></td>
                         <td><?php echo $user['username']; ?></td>
                         <td><?php echo $user['email']; ?></td>
-                        <td><span user-id="<?php echo $user['user_id']; ?>" class="glyphicon glyphicon-remove remove-user"></span> | Edit</td>
+                        <td><span user-id="<?php echo $user['user_id']; ?>" class="glyphicon glyphicon-remove remove-user"></span>&nbsp;|&nbsp;<span user-id="<?php echo $user['user_id']; ?>" class="glyphicon glyphicon-pencil edit-user"></span></td>
                     </tr>
                 <?php
 				}

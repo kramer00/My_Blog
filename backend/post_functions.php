@@ -2,7 +2,14 @@
 session_start();
 require_once 'database.php';
 
-function add_comment($post_id, $comment, $user_id)
+/**
+ * Add a comment to a post
+ * @param int    $post_id The post ID
+ * @param int    $user_id The user ID
+ * @param string $comment The comment body
+ * @return bool|array Returns assoc array of the comment data if successful
+ */
+function add_comment($post_id, $user_id, $comment)
 {
     $data = array(
         '`post_id`'    => (int)$post_id,
@@ -11,7 +18,62 @@ function add_comment($post_id, $comment, $user_id)
         '`created_ts`' => time(),
     );
 
-    $insert_query = 'INSERT ' . TBL_POSTS . '(' . implode(',', array_keys($data)) . ') VALUES (' . implode(',', array_values($data)) . ')';
+    $insert_query = 'INSERT ' . TBL_COMMENTS . '(' . implode(',', array_keys($data)) . ') VALUES (' . implode(',', array_values($data)) . ')';
+
+    if($result = mysql_query($insert_query))
+    {
+        $comment_id       = mysql_insert_id();
+        $select_query  = 'SELECT c.*, u.username
+                            FROM ' . TBL_COMMENTS . ' c
+                            JOIN '.TBL_USERS.' u
+                                ON u.`user_id` = c.`user_id`
+                            WHERE c.`comment_id`=' . (int)$comment_id;
+        $select_result = mysql_query($select_query);
+        $row           = mysql_fetch_assoc($select_result);
+
+        return $row;
+    }
+
+    return FALSE;
+}
+
+/**
+ * Get all comments for a post.
+ * @param int $post_id POST ID
+ * @return array Returns an array of all comments belonging to a post
+ */
+function get_post_comments($post_id)
+{
+    $select_query = 'SELECT c.*, u.username
+                      FROM '.TBL_COMMENTS.' c
+                      JOIN '.TBL_USERS.' u
+                        ON u.`user_id` = c.`user_id`
+                      WHERE c.`post_id`='.(int)$post_id.'
+                      ORDER BY c.`created_ts` ASC';
+
+    $comments = array();
+    $results = mysql_query($select_query);
+    while($row = mysql_fetch_assoc($results))
+    {
+        $comments[] = $row;
+    }
+
+    return $comments;
+}
+
+/**
+ * @param int $comment_id Comment ID
+ * @return bool
+ */
+function delete_comment($comment_id)
+{
+    $delete_query = 'DELETE FROM '.TBL_COMMENTS.' WHERE `comment_id`='.(int)$comment_id;
+    if($result = mysql_query($delete_query))
+    {
+        return TRUE;
+    }
+
+    return FALSE;
 }
 
 /*
